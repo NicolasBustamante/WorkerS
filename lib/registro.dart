@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class Registro extends StatelessWidget{
   static String tag = 'registro-page';
@@ -80,4 +80,4 @@ class Registro extends StatelessWidget{
         )
     );
   }
-}
+} */

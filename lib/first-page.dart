@@ -1,11 +1,41 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-class Firstpage extends StatelessWidget{
-  static String tag = '/first-page';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:workers/home.dart';
+
+class FirstPage extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return FirstState();
+  }
+}
+
+class FirstState extends State<FirstPage> {
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<FirebaseUser> _handleSignIn() async {
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth = await googleUser
+        .authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final FirebaseUser user = (await _auth.signInWithCredential(credential))
+        .user;
+    print("signed in " + user.displayName);
+    return user;
+  }
 
   @override
   Widget build(BuildContext context) {
-
     final loginButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
@@ -19,7 +49,19 @@ class Firstpage extends StatelessWidget{
             minWidth: 200.0,
             height: 42.0,
             onPressed: () {
-              Navigator.of(context).pushNamed('/login-page');
+             // _handleSignIn().whenComplete(() {
+
+             // });
+              _handleSignIn().then((FirebaseUser user){
+                print('usuario - $user');
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return (HomePage());
+                    },
+                  ),
+                );
+              }).catchError((e) => print(e));
             },
             color: Colors.lightGreen,
             child: Text('Ingresar', style: TextStyle(color: Colors.black))
@@ -57,15 +99,17 @@ class Firstpage extends StatelessWidget{
               padding: EdgeInsets.only(left: 24.0, right: 24.0),
               children: <Widget>[
                 new Image.asset(
-                  'assets/logoworkers.png',
+                  '',
                   width: 80.0,
                   height: 100.0,
                 ),
-                loginButton,
-                registerButton
+                loginButton
               ],
             )
         )
     );
   }
+
+
+
 }

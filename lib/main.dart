@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
   final routes = {
     '/login-page': (BuildContext context) => new LoginMenu(),
     '/home-page': (BuildContext context) => new HomePage(),
-    '/registro-page': (BuildContext context) => new Registro(),
     '/historial-page': (BuildContext context) => new HistorialPage(),
     '/notificaciones-page': (BuildContext context) => new NotificacionesPage(),
     '/ayuda-page': (BuildContext context) => new Ayuda(),
@@ -28,7 +27,8 @@ class MyApp extends StatelessWidget {
     '/pago-page': (BuildContext context) => new TarjetaPage(),
     '/datos-page': (BuildContext context) => new datosPage(),
     '/configuracion-page': (BuildContext context) => new ConfiguracionPage(),
-    '/trabajos-page': (BuildContext context) => new TrabajoPage()
+    '/trabajos-page': (BuildContext context) => new TrabajoPage(),
+    '/first-page': (BuildContext context) => new FirstPage()
   };
 
 
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Firstpage(),
+      home: FirstPage(),
       routes: routes,
     );
   }
