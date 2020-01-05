@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:workers/home.dart';
+import 'package:workers/ui/views/addPerfilView.dart';
 
 class FirstPage extends StatefulWidget{
   @override
@@ -57,7 +58,7 @@ class FirstState extends State<FirstPage> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return (HomePage());
+                      return (AddPerfil());
                     },
                   ),
                 );
@@ -109,7 +110,4 @@ class FirstState extends State<FirstPage> {
         )
     );
   }
-
-
-
 }
