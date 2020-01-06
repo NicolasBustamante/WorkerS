@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'package:workers/a%C3%B1adirdatos.dart';
+import 'package:workers/core/viewmodels/CRUDTrabajador.dart';
+import 'package:workers/ui/views/a%C3%B1adirdatos.dart';
 import 'package:workers/ayuda.dart';
 import 'package:workers/configuracion.dart';
 import 'package:workers/core/services/api.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
     '/ayuda-page': (BuildContext context) => new Ayuda(),
     '/perfil-page': (BuildContext context) => new ProfileView(),
     '/pago-page': (BuildContext context) => new TarjetaPage(),
-    '/datos-page': (BuildContext context) => new datosPage(),
+    '/datos-page': (BuildContext context) => new AddDataPage(),
     '/configuracion-page': (BuildContext context) => new ConfiguracionPage(),
     '/trabajos-page': (BuildContext context) => new TrabajoPage(),
     '/first-page': (BuildContext context) => new FirstPage()
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(builder: (_) => locator<CRUDModel>()),
         ChangeNotifierProvider(builder: (_) => locator<CRUDPerfil>()),
+        ChangeNotifierProvider(builder: (_) => locator<CRUDTrabajador>())
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

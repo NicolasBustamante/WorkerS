@@ -40,12 +40,11 @@ class FirstState extends State<FirstPage> {
     final loginButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
-        borderRadius: BorderRadius.circular(30.0),
         shadowColor: Colors.lightGreen.shade100,
         elevation: 5.0,
         child: MaterialButton(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0)
+
             ),
             minWidth: 200.0,
             height: 42.0,
@@ -73,12 +72,11 @@ class FirstState extends State<FirstPage> {
     final registerButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
-        borderRadius: BorderRadius.circular(30.0),
         shadowColor: Colors.lightBlueAccent.shade100,
         elevation: 5.0,
         child: MaterialButton(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0)
+
             ),
             minWidth: 200.0,
             height: 42.0,
@@ -99,12 +97,17 @@ class FirstState extends State<FirstPage> {
               shrinkWrap: true,
               padding: EdgeInsets.only(left: 24.0, right: 24.0),
               children: <Widget>[
-                new Image.asset(
-                  '',
-                  width: 80.0,
-                  height: 100.0,
+                Container(
+                  height: 90,
+                  width: 130,
+                  child: Image(
+                    image: AssetImage('./assets/images/workers.png'),
+                  ),
                 ),
-                loginButton
+
+                Padding(
+                  padding: EdgeInsets.fromLTRB(24, 60, 24, 24),
+                    child: loginButton)
               ],
             )
         )

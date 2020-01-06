@@ -3,20 +3,48 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:workers/core/models/productModel.dart';
 import 'package:workers/core/viewmodels/CRUDModel.dart';
+import 'package:workers/core/viewmodels/CRUDPerfil.dart';
 import 'package:workers/ui/widgets/trabajosCard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class TrabajoPage extends StatefulWidget{
+
   @override
   State<StatefulWidget> createState() {
     return TrabajoState();
   }
 }
 
+
 class TrabajoState extends State<TrabajoPage>{
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<String> currentUser() async{
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    return user.uid;
+  }
+
+  String _googleToken;
+
   List<Trabajo> trabajos;
+  @override
+  void initState() {
+    currentUser().then((data) =>
+        setState(() {
+          _googleToken = data;
+        }));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final TrabajoProvider = Provider.of<CRUDModel>(context);
+    final perfilProvider = Provider.of<CRUDPerfil>(context);
+
+    var categoria = perfilProvider.getCategoriaPerfilById(_googleToken).toString();
+
 
     return Scaffold(
       appBar: AppBar(

@@ -166,30 +166,6 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                     ],
                   ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          "Reconocimientos",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 22,
-                              fontWeight: FontWeight.normal),
-                        ),
-                        Text(
-                          "VER TODO",
-                          style: TextStyle(
-                              color: Colors.lightGreen,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                  makeCompliementsList("A Tiempo"),
                 ],
               ),
             ),
@@ -277,7 +253,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             children: <Widget>[
               ClipOval(
                 child: Image.asset(
-                  "assets/images/user_profile.jpg",
+                  "assets/images/user.png",
                   width: 100,
                   height: 100,
                   fit: BoxFit.cover,
@@ -333,7 +309,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
 // AQUI VAN ICONOS DE RECONOCIMIENTOS
 
-Widget makeCompliementsList(String title) {
+/*Widget makeCompliementsList(String title) {
   return Container(
     padding: EdgeInsets.only(left: 5, right: 5),
     height: 220,
@@ -411,4 +387,4 @@ List<Widget> makeContainers(String title) {
     }
   }
   return compliementsList;
-}
+}*/

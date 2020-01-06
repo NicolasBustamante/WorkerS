@@ -12,8 +12,9 @@ class Api{
     return ref.getDocuments();
   }
 
+  // trabajo activo, arturo agregar estado a trabajos publicados
   Stream<QuerySnapshot> streamDataCollection() {
-    return ref.snapshots();
+    return ref.where('estado', isEqualTo: 'activo').snapshots();
   }
 
   Future<DocumentSnapshot> getDocumentById(String id) {

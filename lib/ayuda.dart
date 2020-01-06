@@ -9,7 +9,15 @@ class Ayuda extends StatelessWidget{
         appBar: AppBar(
           title: Text("Ayuda"),
           backgroundColor: Colors.lightGreen,
-        )
+        ),
+      body: Center(
+        child: Text("Por el momento no contamos con Soporte Directo, pero puedes escribirnos a works-dev@gmail.com",
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 20,
+          fontWeight: FontWeight.bold
+        ),)
+      )
     );
   }
 }

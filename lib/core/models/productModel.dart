@@ -5,8 +5,9 @@ class Trabajo {
   String archivo;
   String estado;
   String categoria;
+  String trabajadorid;
 
-  Trabajo({this.id, this.titulo, this.descripcion, this.archivo, this.estado, this.categoria});
+  Trabajo({this.id, this.titulo, this.descripcion, this.archivo, this.estado, this.categoria, this.trabajadorid});
 
   Trabajo.fromMap(Map snapshot,String id) :
       id = id ?? '',
@@ -14,15 +15,16 @@ class Trabajo {
       descripcion = snapshot['descripcion'] ?? '',
       archivo = snapshot['archivo'] ?? '',
       estado = snapshot['estado'] ?? '',
-      categoria = snapshot['categoria'] ?? '';
+      categoria = snapshot['categoria'] ?? '',
+      trabajadorid = snapshot['trabajadorid'] ?? '';
 
   toJson() {
    return {
      "titulo": titulo,
      "descripcion": descripcion,
-     "archivo": archivo,
      "estado": estado,
-     "categoria": categoria
+     "categoria": categoria,
+     "trabajadorid": trabajadorid,
    };
   }
 }

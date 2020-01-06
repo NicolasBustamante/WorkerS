@@ -23,6 +23,10 @@ class CRUDPerfil extends ChangeNotifier {
     var doc = await _api.getDocumentById(id);
     return Perfil.fromMap(doc.data, doc.documentID);
   }
+  Future<Perfil> getCategoriaPerfilById(String googleToken) async {
+    var doc = await _api.getDocumentById(googleToken);
+    return Perfil.fromMap(doc.data, doc.documentID);
+  }
 
   Future removePerfil(String id) async {
     await _api.removeDocument(id);

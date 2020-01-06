@@ -16,6 +16,11 @@ class CRUDModel extends ChangeNotifier {
     return trabajos;
   }
 
+
+  Stream<QuerySnapshot> fetchTrabajosByGoogleId(String categoria) {
+    return _api.ref.where('categoria',isEqualTo: categoria).snapshots() ;
+  }
+
   Stream<QuerySnapshot> fetchTrabajoAsStream() {
     return _api.streamDataCollection();
   }
